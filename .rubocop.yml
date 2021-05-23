@@ -13,6 +13,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/**/*'
     - 'bin/**/*'
+    - Guardfile
 Style/Documentation:
   Enabled: false
 Style/FrozenStringLiteralComment:

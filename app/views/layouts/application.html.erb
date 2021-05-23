@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SampleApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
+  <%= stylesheet_link_tag "tailwind" %>
+  <%= stylesheet_link_tag "inter-font" %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
+
+  <%= render "layouts/shim" %>
+  <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
+</head>
+
+<body>
+  <%= render "layouts/header" %>
+  <div class="">
     <%= yield %>
-  </body>
+  </div>
+    <%= render "layouts/footer" %>
+</body>
+
 </html>

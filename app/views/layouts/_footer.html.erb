@@ -1,0 +1,15 @@
+<footer>
+  <div class="container mx-auto">
+    <div class="flex flex-col justify-between pt-2 pb-10 border-t sm:flex-row">
+      <p class="text-sm text-gray-600">
+        The <a class="text-blue-500 hover:underline" href="https://www.railstutorial.org">Ruby on Rails Tutorial</a> by <a href="https://www.michaelhartl.com/">Michael Hartl</a>
+      </p>
+      <div class="flex items-center mt-4 space-x-4 sm:mt-0">
+        <%= link_to "About", about_path, class: "text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400" %>
+        <%= link_to "Contact", contact_path, class: "text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400" %>
+        <a href="#" class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400">
+          News
+        </a>
+      </div>
+    </div>
+</footer>
