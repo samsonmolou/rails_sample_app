@@ -1,0 +1,6 @@
+<% if @feed_items.any? %>
+  <ol class="flex flex-col">
+    <%= render @feed_items %>
+  </ol>
+ <%== pagy_nav(@pagy) %>
+<% end %>

@@ -1,0 +1,53 @@
+<% provide(:title, @user.name) %>
+<div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+  <div class="flex flex-row">
+    <div class="w-1/4">
+      <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800">
+        <div class="flex flex-row items-start gap-4">
+          <%= gravatar_for(@user) %>
+          <div class="h-28 w-full flex flex-col justify-between">
+            <div>
+              <h1 class="text-gray-800 dark:text-white text-2xl font-bold">
+                <%= @user.name %>
+              </h1>
+              <p class="text-gray-400 text-xs">
+                <%= @user.email %>
+              </p>
+            </div>
+            <div class="rounded-lg bg-grey-200 dark:bg-white p-2 w-full">
+              <div class="flex items-center justify-between text-sm text-gray-400 dark:text-black">
+                <p class="flex flex-col">
+                  <span class="font-semibold">Articles</span> 
+                  <span class="text-black dark:text-indigo-500 font-bold">
+                    34
+                  </span>
+                </p>
+                <p class="flex flex-col">
+                  <span class="font-semibold">Followers</span> 
+                  <span class="text-black dark:text-indigo-500 font-bold">
+                    455
+                  </span>
+                </p>
+                <p class="flex flex-col">
+                  <span class="font-semibold">Rating</span> 
+                  <span class="text-black dark:text-indigo-500 font-bold">
+                    9.3
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="pt-2 pl-32 w-3/4">
+      <% if @user.microposts.any? %>
+        <h3 class="font-bold text-3xl mb-4">Microposts (<%= @user.microposts.count %>)</h3>
+        <ol class="flex flex-col">
+          <%= render @microposts %>
+        </ol>
+        <%== pagy_nav(@pagy) %>
+      <% end %>
+    </div>
+  </div>
+</div>

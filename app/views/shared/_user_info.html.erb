@@ -1,0 +1,36 @@
+<div class="w-10/12 shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800">
+  <div class="flex flex-row items-start gap-4">
+    <%= gravatar_for(current_user) %>
+    <div class="h-28 w-full flex flex-col justify-between">
+      <div>
+        <h1 class="text-gray-800 dark:text-white text-2xl font-bold">
+          <%= current_user.name %>
+        </h1>
+        
+        <%= link_to "view my profile", current_user, class: "text-blue-500" %>
+      </div>
+      <div class="rounded-lg bg-grey-200 dark:bg-white w-full">
+        <div class="flex items-center justify-between text-sm text-gray-400 dark:text-black">
+          <p class="flex flex-col">
+            <span class="font-semibold"><%= "Micropost".pluralize(current_user.microposts.count)  %></span>
+            <span class="text-black dark:text-indigo-500 font-bold">
+              <%= current_user.microposts.count %>
+            </span>
+          </p>
+          <p class="flex flex-col">
+            <span class="font-semibold">Followers</span>
+            <span class="text-black dark:text-indigo-500 font-bold">
+              455
+            </span>
+          </p>
+          <p class="flex flex-col">
+            <span class="font-semibold">Rating</span>
+            <span class="text-black dark:text-indigo-500 font-bold">
+              9.3
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

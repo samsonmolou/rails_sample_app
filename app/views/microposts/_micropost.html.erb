@@ -1,0 +1,16 @@
+<li id="micropost-<%= micropost.id %>" class="border-gray-400 flex flex-row mb-2">
+  <div class="shadow border select-none cursor-pointer bg-white dark:bg-gray-800 rounded-md flex flex-1 p-4">
+    <%= link_to gravatar_for(micropost.user, size: 50), micropost.user, class: "" %>
+    <div class="flex flex-col ml-2">
+      <span class="font-medium text-blue-500"><%= link_to micropost.user.name, micropost.user %></span>
+      <span class="text-gray-900"><%= link_to micropost.content, micropost.user %></span>
+      <%= image_tag micropost.display_image if micropost.image.attached? %>
+      <span class="text-sm text-gray-500 mt-2 ">
+        Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+        <% if current_user?(micropost.user) %>
+          | <%= link_to "delete", micropost, method: :delete, data: "You sure?", class: "text-red-500 font-bold hover:underline text-sm" %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</li>

@@ -1,0 +1,75 @@
+<% provide(:title, "Reset password") %>
+<div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+  <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
+    <div class="flex flex-col mb-16 sm:text-center sm:mb-0">
+      <div class="mb-6 sm:mx-auto flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50">
+        <svg class="w-10 h-10 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
+          <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+        </svg>
+      </div>
+      <div class="max-w-xl mb-5 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+        <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+          <span class="relative inline-block">
+            <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+              <defs>
+                <pattern id="e77df901-b9d7-4b9b-822e-16b2d410795b" x="0" y="0" width=".135" height=".30">
+                  <circle cx="1" cy="1" r=".7"></circle>
+                </pattern>
+              </defs>
+              <rect fill="url(#e77df901-b9d7-4b9b-822e-16b2d410795b)" width="52" height="24"></rect>
+            </svg>
+            <span class="relative">Reset password</span>
+          </span>
+        </h2>
+      </div>
+    </div>
+    <div>
+      <%= form_with(model: @user, url: password_reset_path(params[:id]), local: true) do |f| %>
+
+      <%= hidden_field_tag :email, @user.email %>
+
+      <div class="mb-1 sm:mb-2">
+        <%= f.label :password, class: "inline-block mb-1 font-medium" %>
+        <%= f.password_field :password, class: "form-control flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" %>
+
+        <% if @user.errors[:password].present? %>
+        <div class="relative">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="absolute text-red-500 right-2 bottom-6" viewBox="0 0 1792 1792">
+            <path d="M1024 1375v-190q0-14-9.5-23.5t-22.5-9.5h-192q-13 0-22.5 9.5t-9.5 23.5v190q0 14 9.5 23.5t22.5 9.5h192q13 0 22.5-9.5t9.5-23.5zm-2-374l18-459q0-12-10-19-13-11-24-11h-220q-11 0-24 11-10 7-10 21l17 457q0 10 10 16.5t24 6.5h185q14 0 23.5-6.5t10.5-16.5zm-14-934l768 1408q35 63-2 126-17 29-46.5 46t-63.5 17h-1536q-34 0-63.5-17t-46.5-46q-37-63-2-126l768-1408q17-31 47-49t65-18 65 18 47 49z">
+            </path>
+          </svg>
+        </div>
+        <% end %>
+        <% @user.errors.full_messages_for(:password).each do |message| %>
+        <div class="relative">
+          <div class="text-sm text-red-500 -bottom-6"><%= message %></div>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="mb-1 sm:mb-2">
+        <%= f.label :password_confirmation, "Password confirmation", class: "inline-block mb-1 font-medium" %>
+        <%= f.password_field :password_confirmation, class: "form-control flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline" %>
+
+        <% if @user.errors[:password_confirmation].present? %>
+        <div class="relative">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="absolute text-red-500 right-2 bottom-6" viewBox="0 0 1792 1792">
+            <path d="M1024 1375v-190q0-14-9.5-23.5t-22.5-9.5h-192q-13 0-22.5 9.5t-9.5 23.5v190q0 14 9.5 23.5t22.5 9.5h192q13 0 22.5-9.5t9.5-23.5zm-2-374l18-459q0-12-10-19-13-11-24-11h-220q-11 0-24 11-10 7-10 21l17 457q0 10 10 16.5t24 6.5h185q14 0 23.5-6.5t10.5-16.5zm-14-934l768 1408q35 63-2 126-17 29-46.5 46t-63.5 17h-1536q-34 0-63.5-17t-46.5-46q-37-63-2-126l768-1408q17-31 47-49t65-18 65 18 47 49z">
+            </path>
+          </svg>
+        </div>
+        <% end %>
+        <% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
+        <div class="relative">
+          <div class="text-sm text-red-500 -bottom-6"><%= message %></div>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="mt-4 mb-2 sm:mb-4">
+        <%= f.submit "Submit", class: "inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

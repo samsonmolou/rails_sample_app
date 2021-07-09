@@ -14,3 +14,6 @@ ActiveStorage.start()
 
 require("alpinejs")
 import "stylesheets/application"
+
+import "controllers"
+
